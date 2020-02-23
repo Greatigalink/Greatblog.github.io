@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="vue.js"></script>
+	</head>
+	<body>
+		<div id="One">
+			<span v-bind:title="message">Please wait...</span>
+		</div>
+<!-- ****************************vue-3*****************************-->
+		<div id="vue-3">
+			<p v-if="seen">Yes!you can see me!</p>
+		</div>
+<!-- ****************************vue-4*****************************-->		
+		<div id="vue-4">
+			<li v-for="todo in todos">
+				{{todo.text}}
+			</li>
+		</div>
+<!-- ****************************vue-5*****************************-->		
+		<div id="vue-5">
+			<p>{{nofity}}</p>
+			<button v-on:click="Inform">通知</button>
+		</div>
+<!-- ****************************vue-6*****************************-->
+		<div id="vue-6">
+			<input v-model="input" />
+			<p>{{remesg}}</p>
+		</div>
+		<script type="text/javascript">
+			var vue2=new Vue({
+				el:'#One',
+				data:{
+					message:'Hello!Now is '+new Date().toDateString()
+				}
+			});
+			var vue3=new Vue({
+				el:'#vue-3',
+				data:{
+					seen:true
+				}
+			});
+			var vue4=new Vue({
+				el:'#vue-4',
+				data:{
+					todos:[
+						{text:'JavaScript'},
+						{text:'Html'},
+						{text:'CSS'}
+					]
+				}
+			});
+			var vue5=new Vue({
+				el:'#vue-5',
+				data:{
+					nofity:'欢迎!'
+				},
+				methods:{
+					Inform:function(){
+						this.nofity='再见！'
+					}
+				}
+			}); 
+			var vue6=new Vue({
+				el:'#vue-6',
+				data:{
+					input:'Hello',
+					mesg:'Vue'
+				},
+				computed:{
+					remesg:function(){
+						return this.input.split('').reverse().join('')
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

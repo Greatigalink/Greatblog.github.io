@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="组件学习.css" />
+	</head>
+	<body>
+		<header id="title-header">
+			<div id="p">
+				Greatlink &nbsp;of &nbsp;Blog
+			</div>	
+		</header>
+		
+		<div id="auto">
+			<div id="Content-blog">
+				<div id="blog-header"></div>
+				<blog-content v-for="post in posts" v-bind:key="post.id" v-bind:post="post"></blog-content>
+			</div>
+			
+			<div id="prossinaly-message">
+					
+			</div>
+
+		</div>
+		
+		<div id="last-message">
+			
+		</div>
+		
+		<div id="guide">
+			<head-guide v-for="guide in guides" v-bind:guide="guide"></head-guide>
+		</div>
+		<script type="text/javascript" src="vue.js"></script>
+		<script type="text/javascript" src="comstudy.js"></script>
+	</body>
+</html>

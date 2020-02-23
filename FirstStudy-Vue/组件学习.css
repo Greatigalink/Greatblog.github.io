@@ -1,0 +1,77 @@
+body{
+	background-color: #77A6F7;
+	margin: 0rem;
+}
+#guide {
+	position: fixed;
+	top: 0rem;
+	left: 0rem;
+	height: 2.0625rem;
+	width: 100%;
+	background-color: black;
+	opacity: 0.5;
+}
+#guide #guide-content {
+	display: inline-block;
+	text-align: center;
+	padding-top: 0.3125rem;
+	margin-left: 2.5rem;
+	height: 1.75rem;
+	font-size: 0.9375rem;
+	width: 6.25rem;
+    color: white;
+	background-color: black;
+	border: 0rem;
+	cursor: pointer;
+}
+#title-header {
+	margin-top: 0rem;
+	height: 22.5rem;
+	background: url(head.png);
+	background-size: cover;
+	position: relative;
+}
+#title-header #p {
+	position: absolute;
+	top: 2.1875rem;
+	left: 40%;
+	height: 3.125rem;
+	padding: 0.5rem;
+	border-radius: 0.3125rem;
+	color: #FFFFFF;
+	font-size: 2.5rem;
+	font-family: "eras medium itc";
+	background-color: #C96567;
+	opacity: 0.65;
+}
+#auto {
+	border: 1px cadetblue solid;
+	position: relative;
+	background-color: #FFFFFF;
+/* 	opacity: 0.6; */
+}
+#auto #Content-blog {
+	display: inline-block;
+	margin: 1.25rem;
+	width: 68%;
+}
+#auto #prossinaly-message {
+	display: inline-block;
+	height: 25rem;
+	width: 18.75rem;
+	border-radius: 5px;
+	border: 1px black solid;
+	position: absolute;
+	top: 1.25rem;
+	left: 78%;
+}
+#auto #Content-blog #content {
+	margin: 35px 5px 5px 5px;
+	padding: 0.625rem;
+	background-color: #C5C6C7;
+}
+
+#last-message {
+	background-color: #1A1A1D;
+	height: 12.5rem;
+}
