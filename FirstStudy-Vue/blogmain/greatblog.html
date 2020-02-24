@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>努力'向前的博客</title>
+		<link rel="stylesheet" type="text/css" href="./greatblog.css" />
+	</head>
+	<body>
+		<!--头部主题	-->
+		<header id="title-header">
+			<div id="p" v-bind:style="athor">
+				Greatlink &nbsp;of &nbsp;Blog
+			</div>	
+		</header>
+		<!--博客主体	-->
+		<div id="auto">
+			<!-- 博客列表 -->
+			<div id="Content-blog">
+				<div id="blog-header"></div>
+				<button onclick="Active(-1)">left</button>
+				<button onclick="Active(1)">right</button>
+				<blog-content v-for="post in posts" v-bind:key="post.id" v-bind:post="post"></blog-content>
+			</div>
+			
+			<!-- 博客相关信息，作者信息 -->
+			<div id="prossinaly-message">
+					
+			</div>
+		</div>
+		<!-- 博客版权信息 -->
+		<div id="last-message">
+			
+		</div>
+		<!-- 导航栏 -->
+		<div id="guide">
+			<head-guide v-for="guide in guides" v-bind:guide="guide" v-bind:style="acstyle"></head-guide>
+		</div>
+		
+		<script type="text/javascript" src="./js/vue.js"></script>
+		<script type="text/javascript" src="./js/component.js"></script>
+		<script type="text/javascript" src="./js/control.js"></script>
+	</body>
+</html>
