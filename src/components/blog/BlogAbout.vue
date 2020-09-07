@@ -132,15 +132,16 @@
 </script>
 
 <style>
-  #about-auto {
-  }
   .about-head {
-    margin: 0px;
-    height: 470px;
+    margin: 100px 8% 0 8%;
+    height: 400px;
     padding: 1px;
+    background: url(http://101.37.83.157:3000/images/headback/about.jpg);
+    background-size: 100% 400px;
+    background-repeat: no-repeat;
   }
   .about-author {
-    margin: 180px 7% 0px 7%;
+    margin: 120px 7% 0px 7%;
     text-align: center;
     color: white;
     line-height: 30px;
@@ -153,8 +154,8 @@
     font-size: 1.25rem;
   }
   .blogabout-ly-dis {
-    margin: 100px 0% 0px 0%;
-    padding: 10px 10% 50px 10%;
+    margin: 0;
+    padding: 10px 15% 50px 15%;
     background-color: white;
   }
   .blogabout-ly-dis p {
@@ -163,7 +164,9 @@
   }
   @media screen and (max-width: 950px) {
     .about-head {
-      height: 375px;
+      height: 270px;
+      margin: 30px 2% 0 2%;
+      background-size: 150% 330px;
     }
     .about-author-wel {
       font-size: 37px;
@@ -172,7 +175,7 @@
       font-size: 17px;
     }
     .blogabout-ly-dis {
-      margin: 100px 0px 0px 0px;
+      margin: 0px;
       padding: 10px 1% 50px 1%;
     }
   }

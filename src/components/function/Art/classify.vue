@@ -47,6 +47,7 @@
           this.childClass = data.label;
           this.nowClass = ' > ' + this.fatherClass + ' > ' + this.childClass;
           this.$store.commit('setterNowClassify', {label: this.nowClass, id: data.id, count: data.count});
+          console.log(data)
         }
       }
     },
@@ -57,6 +58,9 @@
 </script>
 
 <style>
+  .blogart-class {
+    background-color: #f5f5f5;
+  }
   .blogart-class div.el-tree-node__content {
     margin: 10px;
     color: #a1887f;

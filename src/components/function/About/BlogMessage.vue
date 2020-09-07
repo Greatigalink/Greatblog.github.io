@@ -30,28 +30,28 @@
       <section class="aboutblog-li" style="line-height: 30px;">
         <aside class="aboutblog-li-p">
           <span>前端:</span>
-          <span style="color: #fb8c00;font-weight: bold;">Vue + Vuex + Vue Router, Element-Ui</span>
+          <span>Vue + Vuex + Vue Router, Element-Ui</span>
         </aside>
         <aside class="aboutblog-li-p">
           <span>后端:</span>
-          <span style="color: #fb8c00;font-weight: bold;">express + mongodb</span>
+          <span>express + mongodb</span>
         </aside>
         <aside class="aboutblog-li-p">
           <span>部署:</span>
-          <span style="color: #fb8c00;font-weight: bold;">阿里云提供的云服务器ECS(学生机每月10元, 1M带宽)</span>
+          <span>阿里云提供的云服务器ECS(学生机每月10元, 1M带宽)</span>
         </aside>
         <aside class="aboutblog-li-p">
           <span>其他:</span>
-          <span style="color: #fb8c00;font-weight: bold;">
-            <p>暂时没搞https, 等以后功能完善了在搞吧, 博客后台和在路上模块还在开发</p>
-            第一次写博客，优化和安全弄得不太好，以后慢慢学习不断改善吧，文章很少，内容也一般，往后一定要慢慢积累，提高质量
+          <span>
+            网站暂时没有弄ssl证书, 等功能完善差不多了就弄, 博客后台和在路上模块还在开发
+            第一次写博客，优化和安全弄得不太好，以后慢慢学习不断改善吧
           </span>
         </aside>
         <aside class="aboutblog-li-p">
           <span>备注:</span>
-          <span style="color: #fb8c00;font-weight: bold;">
-            <p>博客里的原创文章转载需要标明来源，并且您不得把它作为商业目的，
-            如果您喜欢我的博客样式，可以随便模仿，但需要标明来源</p>
+          <span>
+            博客里的原创文章转载需要标明来源，并且您不得把它作为商业目的，
+            如果您喜欢我的博客样式，可以随便模仿，但需要标明来源
             谢谢您的配合!
           </span>
         </aside>
@@ -106,7 +106,7 @@
         switch(str) {
           case 'QQ': this.callImgSrc = 'http://101.37.83.157:3000/images/callimg/QQ.jpg';break;
           case 'WeChat': this.callImgSrc = 'http://101.37.83.157:3000/images/callimg/WeChat.png';break;
-          case 'Email': this.callImgSrc = 'mailto:gretiga@126.com';this.callAlt = 'greatiga@126.com';break;
+          case 'Email': this.callImgSrc = 'mailto:greatiga@126.com';this.callAlt = 'greatiga@126.com';break;
         }
         window.open(this.callImgSrc);
       }
@@ -117,7 +117,7 @@
 <style>
   #aboutblog {
     background-color: white;
-    padding: 10px 6% 60px 3%;
+    padding: 10px 15% 60px 10%;
   }
   .aboutblog-auto {
     margin-top: 50px;
@@ -157,12 +157,18 @@
     color: #ffa726;
     font-size: 20px;
   }
+  .aboutblog-li-p span:nth-child(1) {
+    color: #fb8c00;
+  }
   .aboutblog-call-li {
     margin: 20px;
     cursor: pointer;
     padding: 3px;
   }
   @media screen and (max-width: 950px) {
+    #aboutblog {
+      padding: 10px 3% 60px 3%;
+    }
     .aboutblog-auto {
       flex-direction: column;
     }

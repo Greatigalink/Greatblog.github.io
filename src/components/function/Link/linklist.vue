@@ -2,6 +2,7 @@
   <div id="link-list">
     <ul style="margin: 0px;padding: 0px;">
       <li v-for="post in linklist"
+        :key="post.id"
         :post="post"
         class="link-list-li"
       >
@@ -12,7 +13,7 @@
             </section>
             <section class="link-list-head">
               <aside class="link-list-head-avator">
-                <el-avatar :size="63" :src="post.AvatorSrc"></el-avatar>
+                <el-avatar :size="63" :src="post.AvatarSrc"></el-avatar>
               </aside>
               <aside class="link-list-head-con">{{post.Name}}</aside>
             </section>
@@ -40,7 +41,7 @@
     methods: {
       getLinkMsg() {
         this.axios.post('/link/linkmsg').then((response)=>{
-          this.linklist = response.data
+          this.linklist = response.data;
         }).catch(err=>{
           alert('服务器出错了')
         })
@@ -51,19 +52,20 @@
 
 <style>
   #link-list {
-    margin: 20px 3% 0px 3%;
+    margin: 0px 3% 0px 3%;
     padding: 1px;
   }
   .link-list-li {
-    margin: 15px 0px 15px 25px;
+    margin: 30px 0px 15px 25px;
+    border: 1px #bdbdbd solid;
     display: inline-block;
     vertical-align: top;
     list-style: none;
     background-color: white;
     width: 275px;
-    height: 290px;
+    height: 165px;
     cursor: pointer;
-    transition: box-shadow 0.5s;
+    transition: all 0.5s;
   }
   .link-list-li:hover {
     box-shadow: 3px 3px 10px #795548;
@@ -72,10 +74,16 @@
     width: 100%;
     height: 100%;
     letter-spacing: 1.5px;
+    position: relative;
   }
   .link-list-preview {
-    margin: 0px;
-    height: 140px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 0px;
+    opacity: 0;
+    transition: all 0.5s;
   }
   .link-list-preview img {
     width: 100%;
@@ -85,6 +93,7 @@
     padding:20px 5px 5px 5px;
     color: #00838f;
     display: flex;
+    transition: all 0.5s;
   }
   .link-list-head-avator {
     flex: 0.5;
@@ -102,9 +111,14 @@
   }
   .link-list-body {
     padding:5px 5px 5px 20px;
-    font-size: 12.5px;
+    font-size: 12px;
     color: #795548;
     line-height: 20px;
+    transition: all 0.5s;
+  }
+  .link-list-li:hover .link-list-preview {
+    opacity: 1;
+    height: 165px;
   }
   @media screen and (max-width: 950px) {
     .link-list-li {

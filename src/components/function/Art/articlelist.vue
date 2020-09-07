@@ -7,7 +7,7 @@
         </header>
 
         <article class="con-intro">
-          {{artpost.Content}}
+          {{artpost.Content.length > 30 ? artpost.Content.slice(0,30) : artpost.Content}}
         </article>
       </div>
       <section class="end-more" @click="getArtContent()">
@@ -27,8 +27,7 @@
       </aside>
     </div>
     <section  class="Art-img">
-      <img v-if="Judgeimg" :src="artpost.ImgSrc" class="img-size"/>
-      <img v-else src="../../../assets/logoko.png" class="iconsize"/>
+      <img :src="artpost.ImgSrc == 'none' ? Judgeimg : artpost.ImgSrc" class="img-size"/>
     </section>
     <div id="Art-end">
        <section class="end-classify">
@@ -61,7 +60,7 @@
     props:['artpost'],
     data:function() {
       return {
-        Judgeimg: this.artpost.ImgSrc === 'none' ? false : true,
+        Judgeimg: 'http://101.37.83.157:3000/art/default.jpg',
         ArtSrc: this.artpost.ArtSrc
       }
     },
@@ -72,8 +71,7 @@
           path: '/detialsart',
           name: 'detialsart',
           query: {
-            artId: id,
-            post: this.artpost
+            artId: id
           }
         })
       }
@@ -87,6 +85,8 @@
     list-style: none;
     padding: 10px;
     display: flex;
+    box-shadow: 5px 5px 10px #757575;
+    background-color: white;
   }
   #Art-body {
     flex: 1.2;
@@ -96,14 +96,9 @@
     margin-top: 10px;
     flex: 1.1;
   }
-  .iconsize {
-    margin: 50px 0% 0px 23%;
-    width: 55%;
-    height: 50%;
-  }
   .img-size {
-    width: 100%;
-    height: 95%;
+    width: 95%;
+    height: 230px;
   }
   .Art-con {
     margin-top: 5px;
@@ -120,7 +115,7 @@
   .con-intro {
     margin-top: 15px;
     width: 95%;
-    min-height: 130px;
+    min-height: 120px;
     font-size: 13.5px;
     line-height: 24px;
     text-align: left;
@@ -178,19 +173,27 @@
   .end-mobile {
     display: none;
   }
-  @media screen and (max-width: 980px) {
+  @media screen and (max-width: 450px) {
     #Article {
       flex-direction: column-reverse;
       background-color: white;
       border: 0px;
       padding: 0px;
+      box-shadow: 0px 0px 0px black;
+      border:1px#bdbdbd solid;
     }
     #Art-end {
       font-size: 10px;
       display: none;
     }
+    .Art-img {
+      margin-left: 10px;
+    }
+    .img-size {
+      height: 170px;
+    }
     .con-intro {
-      min-height: 90px;
+      min-height: 40px;
     }
     .end-more {
       margin: 0px 50% 0px 0%;

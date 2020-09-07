@@ -1,10 +1,10 @@
 <template>
   <div id="detials-auto">
-    <header class="detials-auto-header">
-      <section style="margin-top: 150px;">
-        <h1>欢迎指出文章错误</h1>
+    <!-- <header class="detials-auto-header">
+      <section>
+        <span>{{nowClassify}}</span>
       </section>
-    </header>
+    </header> -->
     <div class="detials-auto-Con">
       <des-con></des-con>
       <div v-if="isArt">
@@ -35,6 +35,7 @@
       return {
         Artwait: true,
         isArt: this.$store.state.isArt,
+        nowClassify: '全部',
         listLodding: false,
         replay: false,
         ryMsg: {},
@@ -52,8 +53,13 @@
           this.$store.commit('setterSubArtCom', {subTF: false});
         }
       },
+      '$route': function() {
+        this.listLodding = false;
+        this.getCommentList();
+      }
     },
     mounted() {
+      this.getClassify();
       this.getCommentList();
     },
     computed: {
@@ -65,6 +71,17 @@
       }
     },
     methods: {
+      getClassify() {
+        var id = this.$route.query.artId;
+        if(id == null || id.length < 5 || id == undefined) id = 0;
+        switch(id[0]) {
+          case '1': this.nowClassify = 'web前端';break;
+          case '2': this.nowClassify = '网站后台';break;
+          case '3': this.nowClassify = '技术杂谈';break;
+          case '4': this.nowClassify = '音乐影视';break;
+          case '5': this.nowClassify = '生活情感';break;
+        }
+      },
       getCommentList() {
         var artid = this.$route.query.artId;
         this.axios.post('/art/artdisplay',{id: artid}).then((response)=>{
@@ -90,27 +107,25 @@
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
   #detials-auto {
-    padding-top: 10px;
+    padding-top: 0px;
     min-height: 700px;
-  }
-  .detials-auto-header {
-    height: 470px;
-    text-align: center;
-    padding-top: 1px;
-    color: white;
+    background: url(http://101.37.83.157:3000/images/headback/homeBack2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
   .detials-auto-Con {
-     background-color: #ECECEC;
      padding: 10px 8% 20px 8%;
   }
-  @media screen and (max-width: 950px) {
-    .detials-auto-header {
-      height: 390px;
-    }
+  @media screen and (max-width: 950px) and (min-width: 450px) {
     .detials-auto-Con {
-      padding: 10px 1% 20px 1%;
+      padding: 10px 2% 20px 2%;
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .detials-auto-Con {
+      padding: 10px 0% 20px 0%;
     }
   }
 </style>

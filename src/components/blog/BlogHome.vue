@@ -1,36 +1,34 @@
 <template>
 	 <div id="home-auto">
-      <div id="home-head">
-        <blog-head></blog-head>
-      </div>
-      <div id="home-body-rdblog">
+      <blog-head></blog-head>
+      <div class="home-body">
         <Recd-blog></Recd-blog>
+        <section class="home-aside">
+          <Hot-Art></Hot-Art>
+          <Recd-link></Recd-link>
+        </section>
       </div>
-      <div id="home-more-blog" @click="turnOnArt">
-        <div class="home-more-blog-back">
-          <section class="he-more-button">
-            <aside>
-              更多文章
-              <i class="el-icon-plus" style="margin-left: 30px;"></i>
-            </aside>
-          </section>
-        </div>
-      </div>
-      <div id="home-body-onroad">
-        <!-- <Recd-life></Recd-life> -->
+      
+      <div class="home-body-onroad">
+        <header>感谢您访问小站~~~</header>
+        <article>目前网站还在开发中......欢迎给我留言哦</article>
+        <footer><span @click="jumpLySay()">去给博主留言</span></footer>
       </div>
 	 </div>
 </template>
 <script>
-
   import Header from '../function/Home/Header.vue'
   import Recdblog from './blogbody/Home/recommendblog.vue'
-
+  import HotArt from '../function/Home/hotart'
+  import RecdLink from '../function/Home/recdlink'
+  import {mapState} from 'vuex'
 	export default {
 		name: 'BlogHome',
 		components: {
       'blog-head': Header,
-      'Recd-blog': Recdblog
+      'Recd-blog': Recdblog,
+      'Hot-Art': HotArt,
+      'Recd-link': RecdLink
 		},
     data:function() {
       return {
@@ -38,79 +36,84 @@
       }
     },
     mounted() {
+      if((document.getElementsByClassName('home-body-onroad')[0].offsetTop - this.scrollTop) < 700) this.footTop = true;
+      if(this.$route.path != '/bloghome') {
+        this.$message({
+          showClose: true,
+          message: '找不到指定页面，重新跳转至首页，有问题留言哦',
+          type: 'warning'
+        });
+      }
+    },
+    computed: {
+      ...mapState({
+        scrollTop: state => state.docScrollTop
+      })
     },
     methods:{
-      turnOnArt() {
+      jumpLySay() {
         this.$router.push({
-          path: '/blogart',
-          name: 'blogart',
-        });
+            path: '/blogabout',
+            name: 'blogabout',
+            params: {
+              turnOnLy: true
+            }
+        })
       }
     }
 	}
 </script>
 
-<style>
-  #home-auto {
-    margin: 0px;
-  }
-  #home-head {
-    width: 100%;
-    height: 470px;
-  }
-  #home-body-rdblog {
+<style lang="scss" scoped>
+  .home-body {
     min-height: 500px;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    background-image: linear-gradient(left, #e9defa, #fbfcdb);
+    padding: 10px 5% 10px 5%;
+    background-color: #f5f5f5;
+    display: flex;
   }
-  #home-more-blog {
-    height: 170px;
+  .home-aside {
+    margin-top: 20px;
+    flex: 1;
   }
-  .home-more-blog-back {
-    height: 170px;
-    padding-top: 10px;
-  }
-  #home-body-onroad {
-    background-color: white;
-  }
-  .he-more-button {
-    margin: 30px 45% 0px 37%;
-    border: 1px white solid;
-    height: 60px;
+  .home-body-onroad {
+    margin: 0px;
+    height: 200px;
     text-align: center;
-    cursor: pointer;
-    transition: background-color 2s,margin-right 0.6s;
-    padding-top: 20px;
-    font-size: 27px;
+    background-color: white;
+    color: #4e342e;
+  }
+  .home-body-onroad header {
+    padding: 20px;
+    font-size: 23px;
+  }
+  .home-body-onroad article {
+    padding: 15px;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .home-body-onroad span {
+    padding: 10px;
+    font-size: 14px;
     font-weight: bold;
-    letter-spacing: 3px;
+    border: 1px solid;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.5s;
+  }
+  .home-body-onroad span:hover {
+    background-color: #ef5350;
     color: white;
+    border-color: white;
   }
-  .he-more-button:hover {
-    background-color: #212121;
-    margin-right: 37%;
+  @media screen and (max-width: 950px) and (min-width: 680px) {
+    .home-aside {
+      margin-top: 0px;
+      flex: 1;
+    }
   }
-  .home-video {
-    margin: 20px 0% 10px 5%;
-    width: 30%;
-    height: 15%;
-  }
-  @media screen and (max-width: 950px) {
-    .he-more-button {
-      margin: 30px 20% 0px 20%;
-      font-size: 17px;
-      height: 45px;
-    }
-    #home-head {
-      height: 375px;
-    }
-    #home-body-rdblog {
-      background: rgba(251,252,219,1);
-    }
-    .home-video {
-      width: 90%;
-      height: 45%;
+  @media screen and (max-width: 680px) {
+    .home-body {
+      flex-direction: column;
     }
   }
 </style>

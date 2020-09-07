@@ -1,8 +1,8 @@
 <template>
   <div id="diary-auto">
     <header class="diary-head">
-      <section style="margin-top: 160px;">
-        <h1>日记</h1>
+      <section>
+        <h1>记事本</h1>
         <h3>记录生活中的小事和想法</h3>
       </section>
     </header>
@@ -64,19 +64,25 @@
     min-height: 500px;
   }
   .diary-head {
-    height: 470px;
+    margin: 100px 8% 0 8%;
+    height: 370px;
     text-align: center;
     color: white;
     padding: 1px;
+    background: url(http://101.37.83.157:3000/images/headback/diary.jpg);
+    background-size: 100% 370px;
+    background-repeat: no-repeat;
+  }
+  .diary-head section {
+    margin-top: 100px;
   }
   .diary-list {
     background-color: white;
-    padding: 30px 5% 0px 5%;
+    padding: 30px 15% 0px 5%;
     min-height: 700px;
-    padding-right: 5%;
   }
   .diary-list div.el-timeline-item__timestamp{
-    color: #ffd54f;
+    color: #ef5350;
     font-weight: bold;
     font-size: 17px;
   }
@@ -84,7 +90,7 @@
     padding: 1px;
     letter-spacing: 1px;
     font-weight: bold;
-    background-color: white;
+    background-color:#efebe9;
   }
   .diary-card h2 {
     margin-top: 20px;
@@ -107,7 +113,9 @@
   }
   @media screen and (max-width: 950px) {
     .diary-head {
-      height: 375px;
+      margin: 30px 1% 0 1%;
+      height: 270px;
+      background-size: 170% 300px;
     }
     .diary-list ul {
       margin: 0px;

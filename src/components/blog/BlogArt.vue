@@ -2,9 +2,9 @@
   <div id="article-auto">
 
     <div class="article-side-left">
-      <aside class="side-left-con">
-        <h1>文章</h1>
-        <p>记录点滴，人生才能像一本书，充满活力</p>
+      <aside>
+        <h1>文章分享</h1>
+        <p>记录生活，不断学习</p> 
       </aside>
     </div>
 
@@ -34,7 +34,7 @@
         </all-art>
         <section style="text-align: center;">
           <el-pagination
-             background
+            background
             :page-size="5"
             layout="prev, pager, next"
             :total="classCount"
@@ -70,7 +70,8 @@
         classCount: 0,
         preCount: 0,
         nextCount: 0,
-        nowClassify: ' > 全部'
+        nowClassify: ' > 全部',
+        authorJm: false
       }
     },
     watch: {
@@ -79,17 +80,23 @@
         this.classId = this.$store.state.nowClassify.id;
         this.classCount = this.$store.state.nowClassify.count;
         this.getArtlist(this.classCount,1);
-        window.scrollTo(0,500);//更换分类时回到顶部
+        window.scrollTo(0,0);//更换分类时回到顶部
       },
       getAllArt:function(newA, oldA) { //监视文章总数的变化，以产生新的分页信息
-        this.classCount = newA;
+        if(!this.authorJm) this.classCount = newA;
+        else this.authorJm = false;
       },
       listenerWidth:function(newW, oldW) {
         this.classDisplay = newW > 930 ? true : false;
       }
     },
     mounted() {
-      this.getArtlist(0,1);
+      if(typeof this.$route.query.id == 'number') {
+        var s = this.$route.query;
+        this.authorJm = true;
+        this.$store.commit('setterNowClassify', {label: s.label, id: parseInt(s.id) , count: s.count});
+      }
+      else this.getArtlist(0,1);
     },
     destroyed() {
       this.$store.commit('setterNowAllArt', {account: 0});
@@ -97,7 +104,7 @@
     methods: {
       getNowPage(val) { //点击页数时向服务端请求相应数据
         this.getArtlist(this.classCount,val);
-        window.scrollTo(0,500);//重定向至顶部
+        window.scrollTo(0,0);//重定向至顶部
       },
       getArtlist(count, nowPage) { //根据所提供的页数及分类总数计算对应页面文章的编号范围
         var prex = count - 5 * nowPage;
@@ -127,14 +134,11 @@
   }
 </script>
 
-<style>
-  #article-auto {
-  }
+<style lang="scss" scoped>
   .article-body {
     display: flex;
-    background-color: white;
+    background-color: #f5f5f5;
     padding: 1px 0px 1px 0px;
-    border-bottom: 17px #ffe082 solid;
     min-height: 700px;
   }
   .article-con-head {
@@ -145,29 +149,44 @@
   }
   .article-content {
     flex: 1.7;
-    margin:0px 15% 20px 2%;
+    margin:0px 10% 20px 2%;
   }
   .article-side-left {
     width: 100%;
-    height: 470px;
-  }
-  .side-left-con {
-    font-weight: bold;
-    padding-top: 140px;
-    text-align: center;
-    font-size: 17px;
-    width: 100%;
-    color: white;
-    letter-spacing: 2px;
+    height: 430px;
+    background: url(http://101.37.83.157:3000/images/headback/book.jpg);
+    background-size: 100% 430px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    aside {
+      font-weight: bold;
+      padding-top: 150px;
+      text-align: center;
+      font-size: 17px;
+      width: 100%;
+      color: white;
+      letter-spacing: 2px;
+      footer {
+        margin-top: 30px;
+        span {
+          border: 2px white solid;
+          border-radius: 15px;
+          padding: 10px;
+        }
+      }
+    }
   }
   .article-side-classify {
     flex: 0.4;
     padding-top: 30px;
     height: 500px;
   }
-  @media screen and (max-width: 930px) {
+  @media screen and (max-width: 950px) {
     .article-side-left {
-      height: 375px;
+      height: 270px;
+      aside {
+        padding-top: 90px;
+      }
     }
     .article-side-classify-mobile {
       position: fixed;
@@ -179,11 +198,14 @@
       padding: 5px;
       border-radius: 5px;
     }
-    .article-body {
-      background-image: linear-gradient(left, #e0f2f1, #e0f2f1);
-    }
     .article-content {
-      margin: 20px 2.5% 0px 0%;
+      margin: 20px 8% 0px 5%;
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .article-side-left {
+      height: 270px;
+      background-size: 180% 270px;
     }
   }
 </style>

@@ -5,14 +5,7 @@
     </header>
 
     <section class="LeaveSay-Warning">
-      <ol>
-        <li v-for="warning in warnings"
-          :key="warning.id"
-          :warning="warning"
-        >
-          <span>{{warning.value}}</span>
-        </li>
-      </ol>
+      <div><strong>想说什么就写下来吧</strong></div>
     </section>
 
     <div class="LeaveSay-input">
@@ -64,7 +57,7 @@
         </el-input>
         <span>图标</span>
         <el-input placeholder="请输入图标地址"
-          v-model="inputavator"
+          v-model="inputavatar"
         >
         </el-input>
         <span>描述</span>
@@ -96,7 +89,7 @@
         inputemail: '',
         inputcon: '',
         inputwebaddr: '',
-        inputavator: '',
+        inputavatar: '',
         inputdescribe: '',
         namewarning: '',
         emailwarning: '',
@@ -106,12 +99,6 @@
         sumC: 0,
         linktrue: false,
         radio: false,
-        warnings: [
-          {id: 1, value: '如果需要博主回复可以留下邮箱，也可不留，名字自定。'},
-          {id: 2, value: '请注意留言信息包括姓名、内容、链接在内不许出现违规违法内容，一经发现即刻删除。'},
-          {id: 3, value: '如需申请友链可以填写信息并与留言一并提交，只是发表留言可以不填友链信息！'},
-          {id: 4, value: '欢迎大家指出错误，提出意见!'}
-        ],
         restaurants: []
       }
     },
@@ -175,7 +162,7 @@
             AddressIp: '127.1.0.1',
             ApplyLink: this.linktrue,
             WebAddr: this.inputwebaddr,
-            AvatorSrc: this.inputavator,
+            AvatarSrc: this.inputavatar,
             Describe: this.inputdescribe,
             Access: false
           }
@@ -183,7 +170,7 @@
             if(response.data) {
               this.open2();
               this.$store.commit('setterSubLeaveSay', {subly: true});
-              this.inputname = this.inputemail = this.inputcon = this.inputwebaddr = this.inputavator = this.inputdescribe = '';
+              this.inputname = this.inputemail = this.inputcon = this.inputwebaddr = this.inputavatar = this.inputdescribe = '';
               this.linktrue = false;
               this.sumN = this.sumC = this.sumE = 0;
             }
@@ -220,7 +207,7 @@
   #LeaveSay {
     margin: 100px 0% 0px 0%;
     background-color: white;
-    padding: 10px 10% 10px 10%;
+    padding: 10px 15% 10px 15%;
   }
   .LeaveSay-head {
     margin: 30px 10% 0px 10%;
@@ -231,19 +218,21 @@
     letter-spacing: 5px;
   }
   .LeaveSay-Warning {
-    margin: 10px 0px 50px 0px;
-    padding: 10px;
-    line-height: 30px;
-    letter-spacing: 1px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #795548;
-    background-color: #ECECEC;
-    border-left: 5px #e57373 solid;
+    margin: 10px 3% 0px 3%;
+    background: url(http://101.37.83.157:3000/images/headback/ly.jpg);
+    background-size: 100% 300px;
+    background-repeat: no-repeat;
+    height: 300px;
+    padding: 1px;
+  }
+  .LeaveSay-Warning div {
+    margin: 100px 0 0 60px;
+    color: white;
+    font-size: 24px;
   }
   .LeaveSay-input {
     margin-top: 20px;
-    padding: 10px 8% 10px 8%;
+    padding: 10px 5% 10px 5%;
   }
   .LeaveSay-input span {
     letter-spacing: 2px;
@@ -299,6 +288,16 @@
   @media screen and (max-width: 950px) {
     #LeaveSay {
       margin: 100px 0% 0px 0%;
+      padding: 10px 3% 10px 3%;
+    }
+    .LeaveSay-Warning {
+      padding: 10px;
+      background-size: 100% 200px;
+      height: 200px;
+    }
+    .LeaveSay-Warning  div {
+      margin: 30px 0 0 10px;
+      font-size: 17px;
     }
     .LeaveSay-input {
       padding: 10px 1% 10px 1%;

@@ -3,35 +3,31 @@
 
     <router-link to="/bloghome" class="guide-name-p">
       <aside :style="{color: guideId == 1 ? '#4dd0e1' : ''}">
-        <i class="el-icon-s-home"></i>首页
+        <i class="el-icon-s-home"></i><strong>首页</strong>
       </aside>
     </router-link>
 
     <router-link to="/blogart" class="guide-name-p">
       <aside :style="{color: guideId == 2 ? '#4dd0e1' : ''}">
-        <i class="el-icon-s-order"></i>文章
+        <i class="el-icon-s-order"></i><strong>文章分享</strong> 
       </aside>
     </router-link>
 
-    <div class="guide-name-onroad" disabled="disabled" title="正在开发,敬请期待...">
-      <aside></aside>在路上
-    </div>
-
     <router-link to="/blogdiary" class="guide-name-p">
       <aside :style="{color: guideId == 4 ? '#4dd0e1' : ''}">
-        <i class="el-icon-camera-solid"></i>日记
+        <i class="el-icon-camera-solid"></i><strong>点滴记录</strong> 
       </aside>
     </router-link>
 
     <router-link to="/bloglink" class="guide-name-p">
       <aside :style="{color: guideId == 5 ? '#4dd0e1' : ''}">
-        <i class="el-icon-paperclip"></i>友链
+        <i class="el-icon-paperclip"></i><strong>友链</strong>
       </aside>
     </router-link>
 
     <router-link to="/blogabout" class="guide-name-p">
       <aside :style="{color: guideId == 6 ? '#4dd0e1' : ''}">
-        <i class="el-icon-s-custom"></i>关于
+        <i class="el-icon-s-custom"></i><strong>关于</strong>
       </aside>
     </router-link>
 
@@ -91,8 +87,8 @@
   .guide-name-p {
     flex: 1;
     text-align: center;
-    padding-top: 17px;
-    font-size: 14px;
+    padding-top: 18px;
+    font-size: 13.5px;
     letter-spacing: 4px;
     cursor: pointer;
     text-decoration: none;
@@ -102,15 +98,6 @@
   }
   .guide-name-p:hover {
     border-bottom-width: 2px;
-  }
-  .guide-name-onroad {
-    flex: 1;
-    padding-top: 17px;
-    text-align: center;
-    font-size: 14px;
-    color: #bdbdbd;
-    letter-spacing: 4px;
-    text-decoration: none;
   }
   @media screen and (max-width: 940px) {
     #guide-name {

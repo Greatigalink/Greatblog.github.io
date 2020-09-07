@@ -1,5 +1,6 @@
 <template>
   <div class="link-body">
+    <link-list></link-list>
     <section class="link-body-Head">
       <ul>
         <li v-for="post in warning"
@@ -17,7 +18,7 @@
         <aside>描述: 别人云亦云,要有自己的思考</aside>
       </section>
     </section>
-    <link-list></link-list>
+    
   </div>
 </template>
 
@@ -43,8 +44,8 @@
 
 <style>
   .link-body {
-    background-color: #ECECEC;
-    padding-top: 50px;
+    background-color: white;
+    padding: 50px 7% 0px 7%;
   }
   .link-body-Head {
     margin: 0px 0px 20px 0px;
@@ -67,7 +68,7 @@
   }
   @media screen and (max-width: 950px) {
     .link-body {
-      margin: 0px 0px 20px 0px;
+      padding: 0px 0% 20px 0%;
     }
   }
 </style>

@@ -3,7 +3,7 @@
     <section id="author-name">
       <aside class="blog-guide-author">Greatiga</aside>
     </section>
-    <section style="flex: 1.7;">
+    <section style="flex: 2;">
       <aside v-if="pcormob" class="pc-guide">
         <guide-list :leave="pcormob"></guide-list>
       </aside>
@@ -17,10 +17,15 @@
           :visible.sync="mob"
           :with-header="false"
           :modal-append-to-body="false"
-          size="170px"
+          size="80%"
         >
-          <aside>
-            <guide-list @closemob="closemob" :leave="pcormob"></guide-list>
+          <aside class="mob-guide-guideAr">
+            <div title="guide2">
+              <guide-list @closemob="closemob" :leave="pcormob"></guide-list>
+            </div> 
+            <div title="author1">
+              <Author></Author>
+            </div>
           </aside>
           <aside class="mob-guide-close" @click="mob = false"><i class="el-icon-close"></i></aside>
         </el-drawer>
@@ -38,10 +43,12 @@
 <script>
   import Guidelist from './Guidelist.vue'
   import {Drawer} from 'element-ui'
+  import Author from '../function/Home/author'
   export default {
     name:'Guide',
     components: {
       'guide-list': Guidelist,
+      'Author': Author,
       ElDrawer: Drawer
     },
     data:function() {
@@ -94,17 +101,27 @@
     width: 100%;
     height: 100%;
     display: flex;
-    border-bottom: 1px #bdbdbd solid;
+    border-bottom: 1px #ececec solid;
+    background-color: white;
   }
   #author-name {
     flex: 0.7;
     font-size: 30px;
-    color: black;
     cursor: pointer;
     text-align: center;
   }
+  .mob-guide-guideAr {
+    display: flex;
+    border:1px white solid;
+  }
+  .mob-guide-guideAr div[title="author1"] {
+    flex: 1;
+  }
+  .mob-guide-guideAr div[title="guide2"] {
+    flex: 0.5;
+  }
   .blog-guide-author {
-    margin-top: 5px;
+    margin-top: 8px;
   }
   .pc-guide {
     height: 100%;
@@ -114,7 +131,7 @@
     flex: 1.7;
   }
   .say-button {
-    margin: 4px 10% 0px 65%;
+    margin: 7px 10% 0px 69%;
     background-color: #00bcd4;
     border: 0px;
     border-radius: 15px;
@@ -139,6 +156,9 @@
     }
     .mob-guide {
       display: block;
+    }
+    .blog-guide-author {
+      margin-top: 5px;
     }
     .guide-mobile {
       float: right;

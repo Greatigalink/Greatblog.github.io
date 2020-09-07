@@ -13,8 +13,8 @@ import hljs from './highlightCon.js'
 
 Vue.config.productionTip = false;
 Vue.prototype.$message = Message;
-// axios.defaults.baseURL = 'http://101.37.83.157:3000';
-axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.baseURL = 'http://101.37.83.157:3000';
+// axios.defaults.baseURL = 'http://192.168.1.100:3000';
 
 Vue.use(VueAxios, axios);
 Vue.use(Avatar);
@@ -29,6 +29,13 @@ Vue.directive('highlight',function (el) {
     hljs.highlightBlock(block)
   })
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  next()
+})
 
 new Vue({
   el: '#app',
