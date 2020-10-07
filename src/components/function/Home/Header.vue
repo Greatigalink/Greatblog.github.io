@@ -9,10 +9,10 @@
       v-on:click="clickHref()"
     >
       <article>
-        <img src="http://101.37.83.157:3000/images/headback/homeBack2.jpg"/>
+        <img src="https://s1.ax1x.com/2020/10/07/0aegwn.jpg"/>
       </article>
       <article>
-        <img src="http://101.37.83.157:3000/images/headback/homeBack1.jpg"/>
+        <img src="https://s1.ax1x.com/2020/10/07/0am4AI.jpg"/>
       </article>
       <section>
         <strong>欢迎来到 努力'向前的博客</strong>
@@ -50,9 +50,9 @@ import {mapState} from 'vuex'
     data:function() {
     	return {
         headArts: [
-          {id: 1, ImgSrc: 'http://101.37.83.157:3000/images/headback/homeBack1.jpg'},
-          {id: 2, ImgSrc: 'http://101.37.83.157:3000/images/headback/homeBack2.jpg'},
-          {id: 3, ImgSrc: 'http://101.37.83.157:3000/images/headback/homeBack3.jpg'}
+          {id: 1, ImgSrc: 'https://s1.ax1x.com/2020/10/07/0am4AI.jpg'},
+          {id: 2, ImgSrc: 'https://s1.ax1x.com/2020/10/07/0aegwn.jpg'},
+          {id: 3, ImgSrc: 'https://s1.ax1x.com/2020/10/07/0aeces.jpg'}
         ],
         playImageNode: '',
         page: 1,

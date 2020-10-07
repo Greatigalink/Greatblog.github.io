@@ -51,14 +51,14 @@
     methods: {
       loadBackImg() {
         let that = this;
-        var imgSrcs = ['/homeBack1.jpg','/homeBack2.jpg','/homeBack3.jpg'],
+        var imgSrcs = ['https://s1.ax1x.com/2020/10/07/0am4AI.jpg'],
             i = 0,
             timer = null,
             len = imgSrcs.length,
             loadImg = function(src) {
               if(i < len) {
                 var imgObject = new Image();
-                imgObject.src = 'http://101.37.83.157:3000/images/headback' + src;
+                imgObject.src = src;
                 timer = setInterval(() => {
                   if(imgObject.complete) {
                     clearInterval(timer);
