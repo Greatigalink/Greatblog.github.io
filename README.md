@@ -1,21 +1,67 @@
-# front-vue
+# 个人博客网站
 
-> A Vue.js project
+## 博客 3.0.0 开发文档
 
-## Build Setup
+> 2.0.0 之前的版本代码耦合度高、冗余、开发流程不规范。故重构博客
 
-``` bash
-# install dependencies
-npm install
+## 文档目录
 
-# serve with hot reload at localhost:8080
-npm run dev
+* 网站前台 (主站展示)
+  * web 前端 : show-fron-end
+  * web 后端 : show-rear-end
 
-# build for production with minification
-npm run build
+* 网站后台 (后台管理)
+  * web 前端 : control-front-end
+  * web 后端 : control-rear-end
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+## 后台管理
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+> 应该优先做好后台管理，实现功能
+
+### 概要设计
+
+#### 用户管理
+
+* **管理员**
+  * 由站长给予管理员权限
+  * 登录后进行操作
+
+* **普通用户**
+  * 注册登录账号之后进行操作
+
+#### 文章管理
+
+* **管理员**
+  * 审核新发布的文章内容
+  * 有权删除允许删除的文章
+  * 管理所有文章分类的添加与删除
+  * 管理所有优秀文章的排名
+  * 可以自行发布文章
+
+* **普通用户**
+  * 发布新文章
+  * 管理文章评论
+
+#### 友链管理
+
+* **管理员**
+  * 审核友链申请
+  * 有权删除不合法友链
+  * 推送优秀友链
+
+* **普通用户**
+  * 提交友链申请
+
+#### 留言评论
+
+* **管理员**
+  * 审核所有评论，有权删除
+
+* **普通用户**
+  * 可删除自己发出的主评论及其子评论
+  * 可删除自己发出的文章评论及其子评论
+
+#### 聊天功能
+
+* 普通用户及管理员都可以进行交流，无限制
+* 评论内容保留一个月
